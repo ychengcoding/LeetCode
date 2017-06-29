@@ -29,7 +29,7 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 def zigzag_convert(s, num_rows):
     str_array = [""] * num_rows
     curr_row = 0
-    step = 1
+    step = 1 if num_rows > 1 else 0
     for c in s:
         str_array[curr_row] += c
         if curr_row + step == num_rows or curr_row + step == -1:
