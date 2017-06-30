@@ -24,7 +24,7 @@ SUBSTITUTION_LIST = [('I' * 4, 'IV'), ('V' + 'I' * 4, 'IX'), ('X' * 4, 'XL'),
                      ('L' + 'X' * 4, 'XC'), ('C' * 4, 'CD'), ('D' + 'C' * 4, 'CM')]
 
 
-def find_suitable_symbol(n):
+def find_val_and_symbol(n):
     for val, symbol in reversed(VAL_SYMBOL_LIST):
         if n >= val and (n // val) < 10:
             return val, symbol
@@ -35,7 +35,7 @@ def int_to_roman(num):
         return None
     roman = ''
     while num:
-        val, symbol = find_suitable_symbol(num)
+        val, symbol = find_val_and_symbol(num)
         roman += symbol * (num // val)
         num %= val
 
