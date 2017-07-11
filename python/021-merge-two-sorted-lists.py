@@ -56,16 +56,15 @@ def merge_two_lists(l1, l2):
     if l2 is None:
         return l1
 
-    n1 = l1.next
-    n2 = l2.next
-    l1.next = l2
-    l2.next = merge_two_lists(n1, n2)
+    if l1.val > l2.val:
+        l1, l2 = l2, l1
+    l1.next = merge_two_lists(l1.next, l2)
     return l1
 
 
 if __name__ == '__main__':
-    l1 = create_linked_list([1, 2, 3, 4, 6])
-    l2 = create_linked_list([3, 5, 9, 60])
+    l1 = create_linked_list([1, 1, 2, 3, 4, 6])
+    l2 = create_linked_list([3, 5, 8, 9, 60])
     print_linked_list(l1)
     print_linked_list(l2)
     l3 = merge_two_lists(l1, l2)
